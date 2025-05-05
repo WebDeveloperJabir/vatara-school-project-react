@@ -1,12 +1,17 @@
-# React + Vite
+# Vatara Model School (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my first large-scale project, and it's built in React. It's for a fictional school named **"Vatara Model School."**
 
-Currently, two official plugins are available:
+## About the Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project uses [Vite](https://vitejs.dev/) for fast development and build. It's initialized with a minimal setup for React and includes:
 
-## Expanding the ESLint configuration
+- **HMR (Hot Module Replacement)** for quick updates
+- ESLint for code linting
+- Vite plugins like:
+  - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react)
+  - or optionally [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) for using SWC
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes
+
+If you're planning to expand this project, consider using TypeScript and enabling type-aware lint rules.
