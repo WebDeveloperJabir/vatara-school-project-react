@@ -1,0 +1,22 @@
+/* Campus */
+.about-campus {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: sans-serif;
+}
+.image-card-campus {
+  width: 45%;
+  background: #3172ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.image-card-campus img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
