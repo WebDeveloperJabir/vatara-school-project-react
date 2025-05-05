@@ -34,18 +34,20 @@ export default function MainTeachers() {
       <div className="title-place">
         <h2>Our Managing Directory</h2>
       </div>
-      {data.map((element) => {
-        return (
-          <TeachersContent
-            name={element.name}
-            link={element.link}
-            post={element.post}
-            sentences={element.sentences}
-            key={element.id}
-          />
-        );
-      })}
-      ;
+      <div className="main-teachers">
+        {data.map((element) => {
+          return (
+            <TeachersContent
+              name={element.name}
+              link={element.link}
+              post={element.post}
+              sentences={element.sentences}
+              key={element.id}
+            />
+          );
+        })}
+        ;
+      </div>
     </div>
   );
 }
