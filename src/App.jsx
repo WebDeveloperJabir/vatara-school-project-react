@@ -5,6 +5,7 @@ import "./page-styles/Error.css";
 import "./page-styles/Information.css";
 // import Loading from "./components/Loading";
 // import ImageSection from "./components/ImageSection";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import AboutCampus from "./pages/About-Campus";
@@ -15,12 +16,14 @@ import InformationTeachers from "./pages/Information-Teachers";
 import TeacherPage from "./pages/TeacherPage";
 import InformationSchoolTiming from "./pages/Information-SchoolTiming";
 import InformationClassRoutine from "./pages/Information-ClassRoutine";
+import BottomUpgoingIcon from "./components/BottomUpgoingIcon";
 
 function App() {
   return (
     <Router>
       {/* <Loading /> */}
       <Header />
+      <BottomUpgoingIcon />
       <main>
         <Routes>
           {/* Home */}
@@ -96,6 +99,7 @@ function App() {
       </main>
       {/* <ImageSection /> */}
       <Footer />
+      <SpeedInsights />
     </Router>
   );
 }
