@@ -7,7 +7,7 @@ export default function NotFoundPage() {
   );
   return (
     <div className="not-found-page error-page">
-      <img src="/error404.svg" alt="" />
+      <img src="/images/error404.svg" alt="" />
       <h1 style={{ fontFamily: "sans-serif" }}>Page not found</h1>
       <p>
         Sorry, we can't find the page you've searched for. Check the URL or

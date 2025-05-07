@@ -5,7 +5,7 @@ export default function () {
     <div className="top-header">
       <div className="header-left-side-content">
         <div className="logo-place">
-          <img src="/school-logo.svg" alt="SchoolLogo" width="95px" />
+          <img src="/images/school-logo.svg" alt="SchoolLogo" width="95px" />
         </div>
         <div className="school-details">
           <h3>Vatara Model School</h3>

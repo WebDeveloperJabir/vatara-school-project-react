@@ -1,53 +1,75 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import Loading from "../components/Loading";
 import SimpleLoader from "../components/SimpleLoader";
 
-// import data from "../datas/teachers_database.json";
-// console.log(data);
+// Component to show each teacher
+function InformationTeacher({ image, name, position, mobile, teacherID }) {
+  const formattedPosition = position.replace(" ", "-").toLowerCase();
 
-function InformationTeacher(props) {
-  let position = props.position.replace(" ", "-").toLowerCase();
   return (
     <div className="teacher">
       <div className="image-section">
-        <img src={props.image} alt="image" />
+        <img src={image} alt="teacher" />
       </div>
       <div className="details">
-        <p className="name">{props.name}</p>
+        <p className="name">{name}</p>
         <p>
-          <mark className={position}>{props.position}</mark>
+          <mark className={formattedPosition}>{position}</mark>
         </p>
-        <p className="contact">{props.mobile}</p>
+        <p className="contact">{mobile}</p>
         <p title="Teacher ID">
-          <code>{props.teacherID}</code>
+          <code>{teacherID}</code>
         </p>
       </div>
     </div>
   );
 }
 
+// Fetch teachers data function
+const fetchTeachers = async () => {
+  const baseURL = "/datas/teachers_database.json";
+  const res = await fetch(baseURL);
+  if (!res.ok) throw new Error("Failed to fetch teacher data");
+  const result = res.json();
+  return result;
+};
+
 export default function InformationTeachers() {
-  let baseURL = "/teachers_database.json";
-  const [teachers, setTeachers] = useState([]);
-  const [trigger, setTrigger] = useState(true);
-  useEffect(() => {
-    fetch(baseURL)
-      .then((response) => response.json())
-      .then((data) => {
-        setTeachers(data);
-        setTrigger(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setTrigger(false);
-      });
-  }, []);
+  // Query to fetch teacher data with caching and staleTime set to 24 hours
+  const {
+    data: teachers = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["teachers"],
+    queryFn: fetchTeachers,
+    staleTime: Infinity, // 24 hours
+    cacheTime: 0, // Keep in memory for 24 hours
+    refetchOnWindowFocus: false, // Prevent refetch on window focus
+  });
+
+  // Memoize the teachers list to prevent unnecessary re-rendering
+  const memoizedTeachersList = useMemo(() => {
+    return teachers.map((teacher) => (
+      <Link
+        to={`/information/teachers/profile-info/${teacher.teacherID}`}
+        key={teacher.teacherID}
+        style={{ textDecoration: "none", color: "inherit" }}
+        target="_blank"
+      >
+        <InformationTeacher {...teacher} />
+      </Link>
+    ));
+  }, [teachers]);
+
+  // Handle errors and loading states
+  if (error) return <div className="error">Error: {error.message}</div>;
 
   return (
     <div className="teachers-section">
-      <Loading trigger={trigger} />
-
+      <Loading trigger={isLoading} />
       <div className="search-place fixed-input">
         <div className="name-search">
           <input type="search" placeholder="Search by name" />
@@ -56,32 +78,14 @@ export default function InformationTeachers() {
           </button>
         </div>
         <div className="code-search">
-          <input type="search" name="" id="" placeholder="Search by code" />
+          <input type="search" placeholder="Search by code" />
           <button>
             <i className="bx bx-search-alt-2"></i>
           </button>
         </div>
       </div>
       <div className="teachers-place">
-        {teachers.map((element) => {
-          return (
-            <Link
-              to={`/information/teachers/profile-info/${element.teacherID}`}
-              key={element.teacherID}
-              style={{ textDecoration: "none", color: "inherit" }}
-              target="_blank"
-            >
-              <InformationTeacher
-                image={element.image}
-                key={element.teacherID}
-                name={element.name}
-                position={element.position}
-                mobile={element.mobile}
-                teacherID={element.teacherID}
-              />
-            </Link>
-          );
-        })}
+        {memoizedTeachersList}
         <SimpleLoader />
       </div>
     </div>

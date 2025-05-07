@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="upper-content">
         <div className="left-content">
           <div className="school-logo-place">
-            <img src="/school-logo.svg" alt="SchoolLogo" width="95px" />
+            <img src="/images/school-logo.svg" alt="SchoolLogo" width="95px" />
             <p>Vatara Model School</p>
           </div>
           <div className="email-and-phone">
@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="vertical-line"></div>
+        <div className="line"></div>
         <div className="middle-content">
           <h3>Quick Links</h3>
           <ul>
@@ -100,12 +100,12 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="vertical-line"></div>
+        <div className="line"></div>
         <div className="right-content">
           <p>Made and Maintained by:</p>
           <a href="www.google.com" target="_blank" title="Jabir Ibne Habib">
             <div className="jabir-div">
-              <img src="/jabir-logo.svg" alt="Jabir Ibne Habib" />
+              <img src="/images/jabir-logo.svg" alt="Jabir Ibne Habib" />
             </div>
           </a>
         </div>
