@@ -41,7 +41,7 @@ const data = [
   },
   {
     name: "Ibn Sina",
-    link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn7ZbaCSQOktKztR0ExTItTv_h_6JRBB593Q&s",
+    link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFA79PMXIfAWNoec9nl0q_FGGD-U8TOZRzDw&s",
     post: "Vice Principal",
     sentences: {
       firstSentence: "All prayers is for Allah",
@@ -119,7 +119,6 @@ export default function MainTeachers() {
             />
           );
         })}
-        ;
       </div>
     </div>
   );
