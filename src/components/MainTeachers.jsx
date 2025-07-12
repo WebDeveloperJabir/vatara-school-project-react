@@ -3,7 +3,7 @@ import React from "react";
 const data = [
   {
     name: "Musa al- Khwarizmi",
-    link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2QzeRyASOq4rX_Ek3RNI-AMtDj8bA2vlyaw&s",
+    link: "/images/Musa-al-Khwarizmi.jfif",
     post: "Head Teacher",
     sentences: {
       firstSentence: "In the name of almighty Allah",
@@ -22,7 +22,7 @@ const data = [
   },
   {
     name: "Muhammad Qudrat-A-Khuda",
-    link: "https://sharebiz.net/wp-content/uploads/2020/11/Kudaroth.jpg",
+    link: "/images/Muhammad_Qudrat-i-Khuda.jpg",
     post: "Chairman",
     sentences: {
       firstSentence: "All prayers is for Allah",
@@ -41,7 +41,7 @@ const data = [
   },
   {
     name: "Ibn Sina",
-    link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFA79PMXIfAWNoec9nl0q_FGGD-U8TOZRzDw&s",
+    link: "/images/Ibn-Sina.jfif",
     post: "Vice Principal",
     sentences: {
       firstSentence: "All prayers is for Allah",
@@ -55,7 +55,7 @@ const data = [
   },
   {
     name: "Jabir Ibn Hayyan",
-    link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mUmlIfVKFga9Tvzbv2j9SqeyM1TC_BtRYQ&s",
+    link: "/images/Jabir-Ibn-Hayyan.jfif",
     post: "Vice Chancellor",
     sentences: {
       firstSentence: "In the name of Allah",

@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 let DiscountBar = () => null;
 let currentMonth = new Date().getMonth();
 
-if (currentMonth === 4 || currentMonth === 11) {
+if (currentMonth === 1 || currentMonth === 11) {
   let messageText =
-    currentMonth === 4
+    currentMonth === 1
       ? "Get 50% off this January!"
       : "December special: 50% discount!";
 

@@ -13,6 +13,7 @@ export default function NotFoundPage() {
         Sorry, we can't find the page you've searched for. Check the URL or
         spelling for mistakes and try again.
       </p>
+      <br />
       <p>If encountering any problems again, please contact to the author.</p>
     </div>
   );

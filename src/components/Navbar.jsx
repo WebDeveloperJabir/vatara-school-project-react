@@ -13,6 +13,10 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
+      <input type="checkbox" id="menu-toggle" hidden />
+      <label htmlFor="menu-toggle">
+        <img src="/images/hamburger-icon.svg" alt="Menu" />
+      </label>
       <ul>
         <li id={activeLink === "/" ? "active" : ""}>
           <Link to="/" onClick={() => setActiveLink("/")}>
@@ -68,12 +72,14 @@ export default function Navbar() {
             </li>
             <li
               id={
-                activeLink.split("/")[2] === "campus-&-building" ? "active" : ""
+                activeLink.split("/")[2] === "campus-and-building"
+                  ? "active"
+                  : ""
               }
             >
               <Link
-                to="/about/campus-&-building"
-                onClick={() => setActiveLink("/about/campus-&-building")}
+                to="/about/campus-and-building"
+                onClick={() => setActiveLink("/about/campus-and-building")}
               >
                 Campus & Building
               </Link>

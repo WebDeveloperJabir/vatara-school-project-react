@@ -21,28 +21,6 @@
     />
   </head>
   <body>
-    <style>
-      #screenSize {
-        padding: 10px;
-        background: lightblue;
-        font-size: 1.2rem;
-        position: fixed;
-        z-index: 9999;
-        display: flex;
-      }
-    </style>
-    <div id="screenSize">Loading...</div>
-    <script>
-      const screenSizeDiv = document.getElementById("screenSize");
-
-      function updateSize() {
-        screenSizeDiv.textContent = `Window size: ${window.innerWidth}px × ${window.innerHeight}px`;
-      }
-
-      updateSize();
-      window.addEventListener("resize", updateSize);
-    </script>
-
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

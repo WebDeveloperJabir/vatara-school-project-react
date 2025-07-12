@@ -17,6 +17,7 @@ import TeacherPage from "./pages/TeacherPage";
 import InformationSchoolTiming from "./pages/Information-SchoolTiming";
 import InformationClassRoutine from "./pages/Information-ClassRoutine";
 import BottomUpgoingIcon from "./components/BottomUpgoingIcon";
+import ScreenSizeBar from "./components/ScreenSizeBar";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
           <Route path="/about/history" element={<NotMadePage />} />
           <Route path="/about/details" element={<NotMadePage />} />
           <Route path="/about/our-ex-principals" element={<NotMadePage />} />
-          <Route path="/about/campus" element={<AboutCampus />} />
+          <Route path="/about/campus-and-building" element={<AboutCampus />} />
           <Route
             path="/about/prizes-from-government"
             element={<NotMadePage />}

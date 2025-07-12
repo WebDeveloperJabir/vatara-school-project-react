@@ -12,6 +12,11 @@
 
 body {
   background-color: #6ed0fd;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
 }
 
 /* Universal Styles */
@@ -196,6 +201,16 @@ body {
   opacity: 1;
 }
 
+/* Screen Size */
+#screenSize {
+  padding: 10px;
+  background: lightblue;
+  font-size: 1.2rem;
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+}
+
 /* Header */
 header {
   /* padding: 15px;
@@ -286,6 +301,11 @@ header {
   background-color: #47b5ff;
   border-bottom: 3px solid #000bd3;
   grid-column: 1/13;
+  position: relative;
+}
+.navbar > label > img {
+  width: 30px;
+  display: none;
 }
 .navbar ul {
   display: flex;
@@ -365,18 +385,18 @@ header {
   background-color: rgb(50, 156, 218);
   border-bottom: 3px solid #000bd3;
 }
-.discount-bar.invisible{
+.discount-bar.invisible {
   display: none;
 }
-.discount-bar .timing-area{
+.discount-bar .timing-area {
   display: flex;
   justify-content: center;
 }
-.discount-bar .cross-button-area{
+.discount-bar .cross-button-area {
   display: flex;
   justify-content: right;
 }
-.discount-bar .cross-button-area .cross-button{
+.discount-bar .cross-button-area .cross-button {
   width: 30px;
   height: 30px;
   background-color: white;
@@ -387,7 +407,7 @@ header {
   font-size: 30px;
   transition: 0.3s ease transform;
 }
-.discount-bar .cross-button-area .cross-button:hover{
+.discount-bar .cross-button-area .cross-button:hover {
   transform: scale(1.1);
 }
 
@@ -414,8 +434,8 @@ main {
 }
 .main-image .content-buttons {
   position: absolute;
-  margin-top: -20%;
-  margin-left: 80px;
+  margin-top: -23%;
+  margin-left: 5%;
 }
 .main-image .content-buttons h2 {
   color: white;
@@ -458,12 +478,12 @@ main {
   border-radius: 10px;
 }
 .about-us-section .about-us h2 {
-  font-size: 27px;
+  font-size: clamp(1.3rem, 1.8vw, 2rem);
   text-decoration: underline;
   margin-bottom: 10px;
 }
 .about-us-section .about-us h3 {
-  font-size: 14px;
+  font-size: clamp(1rem, 1vw, 1.3rem);
 }
 
 /* Main Teachers Section */
@@ -523,12 +543,12 @@ main {
   font-family: sans-serif;
 }
 .main-teacher-section .top-content .details h3 {
-  font-size: 25px;
+  font-size: clamp(1.5rem, 2vw, 2rem);
 }
 .main-teacher-section .top-content .details h4 {
-  font-size: 15px;
+  font-size: clamp(1rem, 1.3vw, 1.5rem);
   color: rgb(63, 63, 63);
-  margin-top: 17px;
+  margin-top: 3.5%;
 }
 .main-teacher-section .top-content .details mark {
   padding: 5px;
@@ -542,7 +562,7 @@ main {
   border: none;
 }
 .main-teacher-section .bottom-content {
-  font-size: 16px;
+  font-size: clamp(1rem, 1vw, 2rem);
   font-family: "Noto Sans", "Arial", sans-serif;
 }
 /* .main-teacher-section .bottom-content p:nth-child(2){
@@ -698,6 +718,40 @@ footer .lower-content p {
     border-bottom: 3px solid #000bd3;
   }
 }
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: right;
+    padding: 3px;
+  }
+  .navbar #menu-toggle:checked ~ ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    right: 0;
+    background-color: #469fe7;
+    box-shadow: 2px 2px 4px black;
+  }
+  .navbar ul li {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .navbar ul li {
+    position: relative;
+    text-align: center;
+  }
+  .navbar ul li .dropdown-menu {
+    top: 0;
+    left: -100%;
+  }
+  .navbar > label > img {
+    display: block;
+  }
+  .navbar ul {
+    display: none;
+  }
+}
 @media (max-width: 720px) {
   .top-header .header-left-side-content {
     grid-row: 2/3;
@@ -739,7 +793,6 @@ footer .lower-content p {
   }
 }
 @media (max-width: 320px) {
-  /* .top-header .header-right-side-content .social-media-addresses {
-    
-  } */
+  .top-header .header-right-side-content .social-media-addresses {
+  }
 }
