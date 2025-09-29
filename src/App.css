@@ -10,13 +10,50 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #6ed0fd;
-  box-sizing: border-box;
+/* Variables */
+:root {
+  --background-color: #f3f4f6;
+  --text-color: #111827;
+  --cards: #ffffff;
+  --navbar: #2949a1;
+  --links-default-text: #ffffff;
+  --links-hover-text: #f97316;
+  --links-active-text: #1e3a8a;
+  --links-active-bg: #ffffff;
+  --links-hover-bg: rgba(255, 255, 255, 0.15);
+  --card-border: #e5e7eb;
+  --heading: #1e3a8a;
+  --dropdown-bg: #ffffff;
+  --dropdown-border: #e5e7eb;
+  --dropdown-hover-bg: #f3f4f6;
+  --footer-bg: #28479e;
+  --footer-text: #f3f4f6;
+  --footer-link: white;
+  --footer-link-hover: #f97316;
+  --header-bg: #60a5fa;
+  --header-text: #111827;
+  --icon-bg: #1e3a8a;
+  --icon-hover-bg: #f97316;
+  --icon-color: #ffffff;
 }
 
+body {
+  background-color: var(--background-color);
+  box-sizing: border-box;
+}
+body p {
+  color: var(--text-color);
+}
 img {
   display: block;
+}
+body a {
+  color: var(--footer-link);
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+body a:hover {
+  color: var(--footer-link-hover);
 }
 
 /* Universal Styles */
@@ -143,6 +180,7 @@ img {
 
 /* Simple Loader */
 .simple-loader {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,6 +220,7 @@ img {
   width: 40px;
   height: 40px;
   background-color: white;
+  border: 1px solid black;
   display: none;
   justify-content: center;
   align-items: center;
@@ -228,7 +267,7 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr;
-  background-color: #92d3ff;
+  background-color: var(--header-bg);
   grid-column: 1/13;
 }
 .top-header .header-left-side-content {
@@ -249,25 +288,13 @@ header {
   font-size: 18px;
   font-family: sans-serif;
 }
-.top-header .header-right-side-content p a {
-  text-decoration: none;
-  color: rgb(61, 61, 61);
-  font-size: 18px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.top-header .header-right-side-content p a:hover {
-  color: black;
-}
 .top-header .header-right-side-content i {
   font-size: 20px;
 }
 .top-header .header-right-side-content .social-media-addresses {
   display: flex;
 }
-.top-header
-  .header-right-side-content
-  .social-media-addresses
-  .social-media-icons {
+.top-header .header-right-side-content .social-media-addresses .social-media-icons {
   width: 28px;
   height: 28px;
   background-color: rgb(255, 255, 255);
@@ -278,10 +305,7 @@ header {
   justify-content: center;
   align-items: center;
 }
-.top-header
-  .header-right-side-content
-  .social-media-addresses
-  .social-media-icons:hover {
+.top-header .header-right-side-content .social-media-addresses .social-media-icons:hover {
   background-color: rgb(0, 0, 0);
 }
 .top-header .school-details {
@@ -298,10 +322,10 @@ header {
 .navbar {
   display: flex;
   justify-content: center;
-  background-color: #47b5ff;
-  border-bottom: 3px solid #000bd3;
+  background-color: var(--navbar);
   grid-column: 1/13;
   position: relative;
+  padding: 5px;
 }
 .navbar > label > img {
   width: 30px;
@@ -312,64 +336,81 @@ header {
   list-style: none;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 .navbar ul li {
-  /* padding: 10px; */
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
   text-align: center;
   position: relative;
   white-space: nowrap;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
-.navbar ul li a {
-  padding: 10px;
+.navbar a {
+  padding: 10px 16px;
   display: block;
   font-weight: 500;
-  color: #3640fd;
-  text-decoration: inherit;
+  color: var(--links-default-text);
+  text-decoration: none;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
-.navbar ul li ul li a {
-  padding: 20;
-  padding-right: 30px;
+.navbar a:hover {
+  color: var(--links-hover-text);
 }
-.navbar ul li a:hover {
-  color: #000bd3;
+.navbar li:hover {
+  background-color: var(--links-hover-bg);
 }
-.navbar ul li:hover {
-  background-color: rgb(128, 208, 245);
+.navbar li#active {
+  background-color: var(--links-active-bg);
 }
-.navbar ul #active {
-  background-color: hsl(184, 100%, 53%);
+.navbar > ul:first-of-type > li > a {
+  color: var(--links-active-text);
+  font-weight: 600;
 }
-.navbar ul li .dropdown-menu {
-  /* For dropdown list */
-  background-color: hwb(0 100% 0%);
-  border: 1px solid black;
+.navbar ul li ul.dropdown-menu {
+  background-color: white; /* same as main navbar background */
+  border: 1px solid var(--dropdown-border);
   position: absolute;
   display: none;
   z-index: 34;
-  top: 100%; /* Places it exactly below the <li> */
-  left: 0; /* Aligns it with the left of <li> */
-  width: auto;
+  top: 101.5%;
+  left: 0;
+  min-width: 180px;
   white-space: nowrap;
+  border-radius: 6px;
+  box-shadow: 1px 3px 7px black;
+  padding: 2px 0;
 }
-.navbar ul li .dropdown-menu li {
+.navbar ul li ul.dropdown-menu li {
   margin: 0;
   text-align: left;
-}
-.navbar ul li:has(.dropdown-menu):hover > a::after {
-  content: " ▲";
-  color: black;
+  border-radius: 0;
 }
 .navbar ul li:has(.dropdown-menu) > a::after {
   content: " ▼";
-  color: black;
+  margin-left: 3px;
+  font-size: 0.8em;
+}
+.navbar ul li:has(.dropdown-menu):hover > a::after {
+  content: " ▲";
+  margin-left: 3px;
 }
 .navbar ul li:hover .dropdown-menu {
   display: block;
+}
+.navbar ul li ul.dropdown-menu a {
+  color: black;
+  padding: 10px 16px;
+  display: block;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.navbar ul li ul.dropdown-menu a:hover {
+  color: var(--links-hover-text);
+  background-color: var(--links-hover-bg);
 }
 
 /* Main */
@@ -512,7 +553,7 @@ main {
   padding: 20px;
 }
 .main-teacher-section .teachers-content {
-  background-color: #129fd6;
+  background-color: var(--cards);
   margin: 5px;
   padding: 10px;
   max-width: 550px;
@@ -573,8 +614,7 @@ main {
 /* Footer */
 footer {
   width: 100%;
-  background-color: #2ea1ff;
-  border-top: #000bd3 3px solid;
+  background-color: var(--footer-bg);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto auto;
@@ -614,11 +654,6 @@ footer .email-and-phone i {
 }
 footer .email-and-phone a {
   text-decoration: none;
-  color: black;
-  transition: 0.2s ease;
-}
-footer .email-and-phone a:hover {
-  color: #54e5ff;
 }
 footer .email-and-phone .email,
 .email-and-phone .phone,
@@ -631,13 +666,8 @@ footer .middle-content {
 }
 footer .middle-content a {
   text-decoration: none;
-  color: black;
   font-size: 17px;
   line-height: 23px;
-  transition: 0.2s ease;
-}
-footer .middle-content a:hover {
-  color: #54e5ff;
 }
 footer .middle-content li {
   list-style-image: url(/images/link-icon.svg);

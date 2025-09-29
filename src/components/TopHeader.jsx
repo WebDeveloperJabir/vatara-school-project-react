@@ -8,7 +8,7 @@ export default function () {
           <img src="/images/school-logo.svg" alt="SchoolLogo" width="95px" />
         </div>
         <div className="school-details">
-          <h3>Vatara Model School</h3>
+          <h3 style={{fontSize:"25px", marginBottom:"6px"}}>Vatara Model School</h3>
           <h5>ESTD. 1987</h5>
           <h5>48/25 A.K. Mansur Road, Bashundhara R/A, Vatara, Dhaka</h5>
         </div>
