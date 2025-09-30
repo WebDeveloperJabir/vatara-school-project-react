@@ -1,24 +1,23 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { createPortal } from "react-dom";
+import { useState, useEffect } from "react";
 
-export default function Loading({ trigger }) {
-  const [loading, setLoading] = useState(true);
-  const [notRemoved, setRemoved] = useState(true);
+export default function Loading({ hide }) {
+  const [removed, setRemoved] = useState(false);
+
   useEffect(() => {
-    if (!trigger) {
-      setLoading(false);
-      const timeout = setTimeout(() => {
-        setRemoved(false);
-      }, 500);
-      return () => clearTimeout(timeout);
+    if (hide === "hidden") {
+      const timer = setTimeout(() => setRemoved(true), 500);
+      return () => clearTimeout(timer);
+    } else {
+      setRemoved(false);
     }
-  }, [trigger]);
+  }, [hide]);
+  if (removed) return null;
 
-  return notRemoved ? (
-    <div className={`loading ${!loading ? "hidden" : ""}`}>
-      <div className="loading-place">
-        <div className="loader"></div>
-      </div>
-    </div>
-  ) : null;
+  return createPortal(
+    <div className={`loading ${hide}`}>
+      <div className='loader'></div>
+    </div>,
+    document.body
+  );
 }

@@ -17,7 +17,7 @@ export default function Navbar() {
         </li>
 
         {/* About Dropdown */}
-        <li id={activeLink.split("/")[1] === "about" ? "active" : ""}>
+        <li id={activeLink.split("/")[1] === "about" ? "active" : ""} className="dropdown-parents">
           <a href='#'>About</a>
           <ul className='dropdown-menu'>
             <li id={activeLink.split("/")[2] === "founders" ? "active" : ""}>
@@ -54,7 +54,7 @@ export default function Navbar() {
         </li>
 
         {/* Information Dropdown */}
-        <li id={activeLink.split("/")[1] === "information" ? "active" : ""}>
+        <li id={activeLink.split("/")[1] === "information" ? "active" : ""} className="dropdown-parents">
           <a href='#'>Information</a>
           <ul className='dropdown-menu'>
             <li id={activeLink.split("/")[2] === "teachers" ? "active" : ""}>
@@ -79,7 +79,7 @@ export default function Navbar() {
         </li>
 
         {/* Result Dropdown */}
-        <li id={activeLink.split("/")[1] === "result" ? "active" : ""}>
+        <li id={activeLink.split("/")[1] === "result" ? "active" : ""} className="dropdown-parents">
           <a href='#'>Result</a>
           <ul className='dropdown-menu'>
             <li id={activeLink.split("/")[2] === "school-result" ? "active" : ""}>
@@ -95,7 +95,7 @@ export default function Navbar() {
         </li>
 
         {/* Admission Dropdown */}
-        <li id={activeLink.split("/")[1] === "admission" ? "active" : ""}>
+        <li id={activeLink.split("/")[1] === "admission" ? "active" : ""} className="dropdown-parents">
           <a href='#'>Admission</a>
           <ul className='dropdown-menu'>
             <li id={activeLink.split("/")[2] === "how-to-take-admission" ? "active" : ""}>
@@ -114,7 +114,7 @@ export default function Navbar() {
         </li>
 
         {/* Facilities Dropdown */}
-        <li id={activeLink.split("/")[1] === "facilities" ? "active" : ""}>
+        <li id={activeLink.split("/")[1] === "facilities" ? "active" : ""} className="dropdown-parents">
           <a href='#'>Facilities</a>
           <ul className='dropdown-menu'>
             <li id={activeLink.split("/")[2] === "library" ? "active" : ""}>

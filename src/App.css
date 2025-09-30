@@ -21,6 +21,8 @@
   --links-active-text: #1e3a8a;
   --links-active-bg: #ffffff;
   --links-hover-bg: rgba(255, 255, 255, 0.15);
+  --links-hover-bg-2nd: rgba(0, 0, 0, 0.09);
+  --links-hover-bg-3rd: rgba(0, 0, 0, 0.2);
   --card-border: #e5e7eb;
   --heading: #1e3a8a;
   --dropdown-bg: #ffffff;
@@ -40,6 +42,7 @@
 body {
   background-color: var(--background-color);
   box-sizing: border-box;
+  font-family: "Roboto Regular", sans-serif;
 }
 body p {
   color: var(--text-color);
@@ -54,6 +57,28 @@ body a {
 }
 body a:hover {
   color: var(--footer-link-hover);
+}
+
+/* Fonts */
+@font-face {
+  font-family: "Roboto Regular";
+  src: url("/public/fonts/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto Bold";
+  src: url("/public/fonts/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto Italic";
+  src: url("/public/fonts/Roboto-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto SemiBold";
+  src: url("/public/fonts/Roboto-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto BoldItalic";
+  src: url("/public/fonts/Roboto-BoldItalic.ttf") format("truetype");
 }
 
 /* Universal Styles */
@@ -112,7 +137,6 @@ body a:hover {
 /* Table Style */
 .table {
   border-collapse: collapse;
-  font-family: sans-serif;
   font-size: 20px;
 }
 .table td,
@@ -141,7 +165,7 @@ body a:hover {
 .loading {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 144, 201, 0.9);
+  background-color: rgb(0, 144, 201);
   position: fixed;
   top: 0;
   left: 0;
@@ -160,20 +184,11 @@ body a:hover {
 .loading.removed {
   display: none;
 }
-.loading .loading-place {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: rgb(238, 238, 238);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.loading .loading-place .loader {
-  width: 60px;
-  height: 60px;
-  border: 4px solid black;
-  border-top: 4px solid rgb(165, 231, 149);
+.loading .loader {
+  width: 85px;
+  height: 85px;
+  border: 5px solid black;
+  border-top: 4px solid rgb(255, 255, 255);
   border-radius: 50%;
   animation: spin 1s ease infinite;
 }
@@ -269,6 +284,7 @@ header {
   grid-template-rows: 1fr;
   background-color: var(--header-bg);
   grid-column: 1/13;
+  align-items: center;
 }
 .top-header .header-left-side-content {
   display: flex;
@@ -285,25 +301,28 @@ header {
 }
 .top-header .header-right-side-content p {
   line-height: 26px;
-  font-size: 18px;
-  font-family: sans-serif;
+  font-size: 17px;
 }
 .top-header .header-right-side-content i {
-  font-size: 20px;
+  font-size: 17px;
 }
 .top-header .header-right-side-content .social-media-addresses {
   display: flex;
 }
 .top-header .header-right-side-content .social-media-addresses .social-media-icons {
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   background-color: rgb(255, 255, 255);
   margin: 3px;
   border-radius: 50%;
   transition: 0.2s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+}
+.top-header .header-right-side-content .social-media-addresses .social-media-icons a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -47%);
 }
 .top-header .header-right-side-content .social-media-addresses .social-media-icons:hover {
   background-color: rgb(0, 0, 0);
@@ -315,7 +334,7 @@ header {
   line-height: 22px;
 }
 .top-header .school-details h3 {
-  color: #4573d6;
+  color: #1855d6;
 }
 
 /* Navbar */
@@ -347,13 +366,13 @@ header {
   border-radius: 6px;
   transition: background-color 0.2s ease;
 }
-.navbar a {
-  padding: 10px 16px;
+.navbar > ul > li > a {
+  padding: 6px 13px;
   display: block;
   font-weight: 500;
   color: var(--links-default-text);
   text-decoration: none;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
   line-height: 1.5;
   transition: color 0.2s ease, background-color 0.2s ease;
 }
@@ -363,16 +382,15 @@ header {
 .navbar li:hover {
   background-color: var(--links-hover-bg);
 }
-.navbar li#active {
+.navbar > ul > li#active {
   background-color: var(--links-active-bg);
 }
-.navbar > ul:first-of-type > li > a {
-  color: var(--links-active-text);
-  font-weight: 600;
+.navbar > ul > li#active > a {
+  color: #000000;
 }
 .navbar ul li ul.dropdown-menu {
-  background-color: white; /* same as main navbar background */
-  border: 1px solid var(--dropdown-border);
+  font-size: 15px;
+  background-color: white;
   position: absolute;
   display: none;
   z-index: 34;
@@ -382,35 +400,39 @@ header {
   white-space: nowrap;
   border-radius: 6px;
   box-shadow: 1px 3px 7px black;
-  padding: 2px 0;
+  padding: 5px 0 5px 0;
 }
 .navbar ul li ul.dropdown-menu li {
   margin: 0;
   text-align: left;
   border-radius: 0;
 }
-.navbar ul li:has(.dropdown-menu) > a::after {
+.navbar ul li ul.dropdown-menu a {
+  color: black;
+  padding: 8px 16px;
+  display: block;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.navbar ul li.dropdown-parents > a::after {
   content: " ▼";
   margin-left: 3px;
   font-size: 0.8em;
 }
-.navbar ul li:has(.dropdown-menu):hover > a::after {
+.navbar ul li.dropdown-parents:hover > a::after {
   content: " ▲";
   margin-left: 3px;
 }
 .navbar ul li:hover .dropdown-menu {
   display: block;
 }
-.navbar ul li ul.dropdown-menu a {
-  color: black;
-  padding: 10px 16px;
-  display: block;
-  font-weight: 500;
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
 .navbar ul li ul.dropdown-menu a:hover {
   color: var(--links-hover-text);
-  background-color: var(--links-hover-bg);
+  background-color: var(--links-hover-bg-2nd);
+}
+.navbar ul li ul.dropdown-menu li#active a {
+  color: black;
+  background-color: var(--links-hover-bg-3rd);
 }
 
 /* Main */
@@ -419,7 +441,6 @@ header {
 .discount-bar {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  font-family: "Noto sans", sans-serif;
   font-size: 20px;
   padding: 10px;
   font-weight: 700;
@@ -481,7 +502,6 @@ main {
 .main-image .content-buttons h2 {
   color: white;
   text-shadow: 4px 4px 5px black;
-  font-family: "Noto Sans", sans-serif;
 }
 .main-image .content-buttons .button-place {
   margin-top: 13px;
@@ -490,7 +510,6 @@ main {
   padding: 9px;
   font-size: 17px;
   font-weight: 700;
-  font-family: "Noto Sans", sans-serif;
   border-radius: 7px;
   border: 1px solid black;
   transition: 0.3s ease;
@@ -510,7 +529,6 @@ main {
   padding: 20px;
 }
 .about-us-section .about-us {
-  font-family: "Noto Sans", sans-serif;
   text-align: center;
   width: 650px;
   line-height: 25px;
@@ -538,10 +556,9 @@ main {
   text-align: center;
   margin-bottom: 13px;
   font-size: 23px;
-  font-family: sans-serif, "Noto Sans", "Arial";
   /* text-decoration: underline;
   text-underline-offset: 10px; */
-  background-color: #4c55ff;
+  background-color: #1f28cf;
   padding: 15px;
   color: white;
   user-select: none;
@@ -581,7 +598,6 @@ main {
 }
 .main-teacher-section .top-content .details {
   margin-left: 15px;
-  font-family: sans-serif;
 }
 .main-teacher-section .top-content .details h3 {
   font-size: clamp(1.5rem, 2vw, 2rem);
@@ -604,7 +620,6 @@ main {
 }
 .main-teacher-section .bottom-content {
   font-size: clamp(1rem, 1vw, 2rem);
-  font-family: "Noto Sans", "Arial", sans-serif;
 }
 /* .main-teacher-section .bottom-content p:nth-child(2){
   text-indent: 10px;
@@ -631,7 +646,6 @@ footer .upper-content {
 } */
 footer .upper-content .left-content .school-logo-place p {
   font-size: 23px;
-  font-family: "Noto Sans", sans-serif;
 }
 footer .upper-content .left-content .email-and-phone {
   margin-top: 20px;
@@ -642,7 +656,6 @@ footer .upper-content .left-content .email-and-phone {
 footer .email-and-phone p,
 footer .email-and-phone a {
   font-size: 17px;
-  font-family: "Noto Sans", sans-serif;
 }
 footer .email-and-phone p {
   margin: 0;
@@ -661,9 +674,8 @@ footer .email-and-phone .email,
   display: flex;
   align-items: center;
 }
-footer .middle-content {
-  font-family: "Noto Sans", sans-serif;
-}
+/* footer .middle-content {
+} */
 footer .middle-content a {
   text-decoration: none;
   font-size: 17px;
@@ -679,7 +691,6 @@ footer .middle-content h3 {
 }
 footer .right-content p {
   font-size: 18px;
-  font-family: "Noto Sans", sans-serif;
 }
 footer .right-content .jabir-div {
   background-color: rgb(108, 213, 255);
@@ -704,7 +715,6 @@ footer .lower-content p {
   font-size: 17px;
   text-align: center;
   color: white;
-  font-family: "Noto Sans", sans-serif;
 }
 
 /* Media Query */
@@ -733,6 +743,7 @@ footer .lower-content p {
   }
   .top-header .header-left-side-content {
     grid-column: 1/13;
+    grid-row: 2/3;
   }
   .top-header .header-right-side-content {
     justify-content: left;
@@ -743,7 +754,7 @@ footer .lower-content p {
     align-items: center;
     margin-top: 10px;
     padding: 10px;
-    grid-row: 2/3;
+    grid-row: 1/2;
     grid-column: 1/13;
     border-bottom: 3px solid #000bd3;
   }
